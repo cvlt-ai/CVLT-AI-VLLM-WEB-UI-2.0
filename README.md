@@ -371,5 +371,5 @@ For issues, questions, or contributions:
 
 For reference testing has been done on a dual gpu system: 1x A6000 Ada & 1x L40 . I am getting about 96-101 toks/s on average having the KV cache stored on gpus, running Qwen 3 30b int8 model with a context size of about 119k. Please let me know of any bugs and I will try to get to them in a timely manner. I HAVE NOT TESTED THIS AT ALL FOR WINDOWS. 
 
-![GitHub Repo stars](https://img.shields.io/github/stars/cvlt-ai/CVLT-Ai-vllm-web-ui?style=social)
+![GitHub Repo stars](https://img.shields.io/github/stars/cvlt-ai/CVLT-AI-VLLM-WEB-UI-2.0?style=social)
 

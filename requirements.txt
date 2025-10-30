@@ -1,0 +1,56 @@
+# Core dependencies
+gradio>=4.0.0
+https://vllm-wheels.s3.us-west-2.amazonaws.com/nightly/vllm-1.0.0.dev-cp38-abi3-manylinux1_x86_64.whl  # Experimental nightly version with latest features
+torch>=2.0.0
+transformers>=4.30.0
+huggingface_hub>=0.16.0
+
+# RAG and vector database
+chromadb>=0.4.0
+sentence-transformers>=2.2.0
+faiss-cpu>=1.7.0  # Alternative to ChromaDB
+
+# Web scraping and requests
+requests>=2.28.0
+beautifulsoup4>=4.11.0
+lxml>=4.9.0
+selenium>=4.0.0  # For dynamic content
+
+# File processing
+pypdf2>=3.0.0
+pdf2image>=1.16.0  # Convert PDF to images for OCR
+python-docx>=0.8.11
+python-multipart>=0.0.5
+aiofiles>=22.0.0
+pillow>=9.0.0
+pytesseract>=0.3.10  # OCR support
+
+# Configuration and utilities
+pyyaml>=6.0
+python-dotenv>=0.19.0
+click>=8.0.0
+rich>=12.0.0
+
+# API and web framework
+fastapi>=0.95.0
+uvicorn>=0.20.0
+httpx>=0.24.0
+
+# GPU and performance
+nvidia-ml-py>=11.0.0  # GPU monitoring
+psutil>=5.9.0  # System monitoring
+GPUtil>=1.4.0  # GPU utilities
+aiohttp>=3.8.0  # Async HTTP client
+
+# Development and testing
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+black>=22.0.0
+flake8>=5.0.0
+mypy>=1.0.0
+
+# Optional dependencies for advanced features
+redis>=4.5.0  # For caching
+celery>=5.2.0  # For background tasks
+ray>=2.0.0  # For distributed computing
+

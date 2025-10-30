@@ -1,0 +1,186 @@
+# vLLM Gradio WebUI Configuration
+
+# Application Settings
+app:
+  name: "CVLT AI vLLM Gradio WebUI"
+  version: "1.0.0"
+  host: "0.0.0.0"
+  port: 7860
+  debug: false
+  log_level: "INFO"
+
+# vLLM Settings
+vllm:
+  # Model Configuration
+  default_model: null  # Will be auto-detected
+  model_dirs:
+    - "./models"
+    - "~/.cache/huggingface/transformers"
+  
+  # GPU Configuration
+  gpu:
+    auto_detect: true
+    tensor_parallel_size: 1  # Auto-detected based on available GPUs
+    pipeline_parallel_size: 1
+    gpu_memory_utilization: 0.9
+    max_model_len: null  # Auto-detected
+    enforce_eager: false
+    
+  # Inference Parameters
+  inference:
+    temperature: 0.7
+    top_p: 0.9
+    top_k: 50
+    max_tokens: 512
+    stop_sequences: []
+    stream: true
+    
+  # Performance Settings
+  performance:
+    max_num_seqs: 256
+    max_num_batched_tokens: null
+    block_size: 16
+    swap_space: 4  # GB
+    cpu_offload_gb: 0
+
+# RAG Configuration
+rag:
+  enabled: true
+  vector_db:
+    type: "chromadb"  # chromadb or faiss
+    persist_directory: "./data/vector_db"
+    collection_name: "documents"
+    
+  embeddings:
+    model: "sentence-transformers/all-MiniLM-L6-v2"
+    device: "auto"  # auto, cpu, cuda
+    
+  retrieval:
+    top_k: 5
+    similarity_threshold: 0.7
+    max_context_length: 4000
+    
+  chunking:
+    chunk_size: 1000
+    chunk_overlap: 200
+    separators: ["\n\n", "\n", " ", ""]
+
+# Web Scraping Configuration
+web_scraper:
+  enabled: true
+  timeout: 30
+  max_pages: 10
+  user_agent: "vLLM-Gradio-WebUI/1.0"
+  headers:
+    Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+  
+  # Content extraction
+  extract:
+    text: true
+    images: false
+    links: true
+    tables: true
+    
+  # Rate limiting
+  rate_limit:
+    requests_per_minute: 60
+    delay_between_requests: 1
+
+# File Processing Configuration
+file_processor:
+  enabled: true
+  upload_dir: "./data/uploads"
+  max_file_size: 100  # MB
+  allowed_extensions:
+    documents: [".pdf", ".docx", ".doc", ".txt", ".md", ".rtf"]
+    images: [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff"]
+    archives: [".zip", ".tar", ".gz"]
+    
+  # Processing settings
+  ocr:
+    enabled: true
+    language: "eng"
+    
+  # Cleanup settings
+  cleanup:
+    auto_delete: true
+    retention_days: 7
+
+# UI Configuration
+ui:
+  theme: "default"  # default, dark, light
+  title: "vLLM Advanced WebUI"
+  description: "Comprehensive LLM interface with RAG, multi-GPU support, and advanced features"
+  
+  # Interface settings
+  interface:
+    show_gpu_stats: true
+    show_model_info: true
+    enable_chat_history: true
+    max_chat_history: 100
+    
+  # Component settings
+  components:
+    file_upload:
+      multiple: true
+      drag_drop: true
+      
+    model_selector:
+      show_details: true
+      auto_refresh: true
+      
+    parameter_controls:
+      advanced_mode: false
+      show_tooltips: true
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "./logs/app.log"
+  max_size: 10  # MB
+  backup_count: 5
+  
+  # Component-specific logging
+  components:
+    vllm: "INFO"
+    rag: "INFO"
+    web_scraper: "WARNING"
+    file_processor: "INFO"
+    ui: "INFO"
+
+# Security Configuration
+security:
+  # File upload security
+  scan_uploads: true
+  quarantine_suspicious: true
+  
+  # Rate limiting
+  rate_limit:
+    enabled: true
+    requests_per_minute: 100
+    
+  # Input validation
+  max_input_length: 10000
+  sanitize_input: true
+
+# Cache Configuration
+cache:
+  enabled: true
+  type: "memory"  # memory, redis, file
+  ttl: 3600  # seconds
+  max_size: 1000  # entries
+  
+  # Component-specific caching
+  components:
+    models: true
+    embeddings: true
+    web_content: true
+
+# Development Settings
+development:
+  auto_reload: false
+  debug_mode: false
+  profiling: false
+  mock_gpu: false  # For testing without GPU
+

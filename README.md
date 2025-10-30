@@ -1,4 +1,4 @@
-# CVLT AI vLLM Gradio WebUI
+# CVLT AI vLLM Gradio WebUI 2.0
 
 A comprehensive web-based interface for vLLM with advanced features including multi-GPU support, RAG capabilities, web scraping, file processing, and more.
 

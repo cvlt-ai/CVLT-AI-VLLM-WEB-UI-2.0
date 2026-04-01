@@ -1,56 +1,169 @@
-# Core dependencies
-gradio>=4.0.0
-https://vllm-wheels.s3.us-west-2.amazonaws.com/nightly/vllm-1.0.0.dev-cp38-abi3-manylinux1_x86_64.whl  # Experimental nightly version with latest features
-torch>=2.0.0
-transformers>=4.30.0
-huggingface_hub>=0.16.0
+# CVLT AI vLLM Gradio WebUI 2.0 - Updated Dependencies
+# Updated: April 2026
 
-# RAG and vector database
-chromadb>=0.4.0
-sentence-transformers>=2.2.0
-faiss-cpu>=1.7.0  # Alternative to ChromaDB
+# ==============================================================================
+# CORE DEPENDENCIES
+# ==============================================================================
 
-# Web scraping and requests
-requests>=2.28.0
-beautifulsoup4>=4.11.0
-lxml>=4.9.0
-selenium>=4.0.0  # For dynamic content
+# vLLM - High-throughput LLM serving (updated to latest stable)
+vllm>=0.6.0,<0.19.0  # Updated from nightly wheel to stable release
 
-# File processing
-pypdf2>=3.0.0
-pdf2image>=1.16.0  # Convert PDF to images for OCR
-python-docx>=0.8.11
-python-multipart>=0.0.5
-aiofiles>=22.0.0
-pillow>=9.0.0
-pytesseract>=0.3.10  # OCR support
+# Gradio - Modern web UI framework (major update with new features)
+gradio>=5.0.0,<7.0.0  # Updated from 4.0.0 - better themes, layouts, streaming
 
-# Configuration and utilities
-pyyaml>=6.0
-python-dotenv>=0.19.0
-click>=8.0.0
-rich>=12.0.0
+# PyTorch - Deep learning framework
+torch>=2.4.0,<3.0.0  # Updated for better performance and compatibility
 
-# API and web framework
-fastapi>=0.95.0
-uvicorn>=0.20.0
-httpx>=0.24.0
+# Transformers - Hugging Face model library (major version update)
+transformers>=4.40.0,<5.5.0  # Updated from 4.30.0
 
-# GPU and performance
-nvidia-ml-py>=11.0.0  # GPU monitoring
-psutil>=5.9.0  # System monitoring
-GPUtil>=1.4.0  # GPU utilities
-aiohttp>=3.8.0  # Async HTTP client
+# Hugging Face Hub - Model downloads and management
+huggingface_hub>=0.20.0,<2.0.0  # Updated from 0.16.0
 
-# Development and testing
-pytest>=7.0.0
-pytest-asyncio>=0.21.0
-black>=22.0.0
-flake8>=5.0.0
-mypy>=1.0.0
+# ==============================================================================
+# RAG AND VECTOR DATABASE
+# ==============================================================================
 
-# Optional dependencies for advanced features
-redis>=4.5.0  # For caching
-celery>=5.2.0  # For background tasks
-ray>=2.0.0  # For distributed computing
+# ChromaDB - Vector database (major update with performance improvements)
+chromadb>=0.5.0,<2.0.0  # Updated from 0.4.0
 
+# Sentence Transformers - Embedding models
+sentence-transformers>=2.3.0,<6.0.0  # Updated from 2.2.0
+
+# FAISS - Alternative vector library
+faiss-cpu>=1.7.4,<2.0.0  # Updated from 1.7.0
+
+# ==============================================================================
+# WEB SCRAPING AND REQUESTS
+# ==============================================================================
+
+# HTTP requests
+requests>=2.31.0,<3.0.0  # Updated from 2.28.0
+
+# Async HTTP client
+httpx>=0.26.0,<1.0.0  # Updated from 0.24.0
+aiohttp>=3.9.0,<4.0.0  # Updated from 3.8.0
+
+# HTML parsing
+beautifulsoup4>=4.12.0,<5.0.0  # Updated from 4.11.0
+lxml>=5.1.0,<6.0.0  # Updated from 4.9.0
+
+# Selenium for dynamic content (optional)
+selenium>=4.15.0,<5.0.0  # Updated from 4.0.0
+
+# ==============================================================================
+# FILE PROCESSING
+# ==============================================================================
+
+# PDF processing
+pypdf2>=3.0.1,<4.0.0  # Updated from 3.0.0
+pdf2image>=1.17.0,<2.0.0  # Updated from 1.16.0
+
+# Document processing
+python-docx>=1.1.0,<2.0.0  # Updated from 0.8.11
+
+# Image processing
+pillow>=10.0.0,<12.0.0  # Updated from 9.0.0
+
+# OCR
+pytesseract>=0.3.10,<1.0.0
+
+# Async file operations
+aiofiles>=23.0.0,<25.0.0  # Updated from 22.0.0
+
+# Multipart form data
+python-multipart>=0.0.9,<1.0.0  # Updated from 0.0.5
+
+# ==============================================================================
+# CONFIGURATION AND UTILITIES
+# ==============================================================================
+
+# YAML configuration
+pyyaml>=6.0.1,<7.0.0  # Updated from 6.0
+
+# Environment variables
+python-dotenv>=1.0.0,<2.0.0  # Updated from 0.19.0
+
+# CLI framework
+click>=8.1.0,<9.0.0  # Updated from 8.0.0
+
+# Rich terminal output
+rich>=13.7.0,<14.0.0  # Updated from 12.0.0
+
+# ==============================================================================
+# API AND WEB FRAMEWORK
+# ==============================================================================
+
+# FastAPI - Modern async API framework (major update)
+fastapi>=0.109.0,<1.0.0  # Updated from 0.95.0
+
+# ASGI server
+uvicorn>=0.27.0,<1.0.0  # Updated from 0.20.0
+
+# ==============================================================================
+# GPU AND PERFORMANCE MONITORING
+# ==============================================================================
+
+# NVIDIA GPU monitoring
+nvidia-ml-py>=12.0.0,<13.0.0  # Updated from 11.0.0
+
+# System monitoring
+psutil>=6.0.0,<7.0.0  # Updated from 5.9.0
+
+# GPU utilities
+GPUtil>=1.4.0
+
+# ==============================================================================
+# NUMERIC AND DATA PROCESSING
+# ==============================================================================
+
+# Numerical computing
+numpy>=1.26.0,<2.2.0  # Added - required by many packages
+
+# Data processing
+pandas>=2.1.0,<3.0.0  # Added - useful for data manipulation
+
+# ==============================================================================
+# CACHING AND BACKGROUND TASKS (Optional)
+# ==============================================================================
+
+# Redis caching
+redis>=5.0.0,<6.0.0  # Updated from 4.5.0
+
+# Celery for background tasks
+celery>=5.3.0,<6.0.0  # Updated from 5.2.0
+
+# Ray for distributed computing
+ray>=2.9.0,<3.0.0  # Updated from 2.0.0
+
+# ==============================================================================
+# DEVELOPMENT AND TESTING
+# ==============================================================================
+
+# Testing framework
+pytest>=7.4.0,<9.0.0  # Updated from 7.0.0
+pytest-asyncio>=0.23.0,<1.0.0  # Updated from 0.21.0
+
+# Code quality
+black>=24.0.0,<26.0.0  # Updated from 22.0.0
+flake8>=7.0.0,<8.0.0  # Updated from 5.0.0
+mypy>=1.8.0,<2.0.0  # Updated from 1.0.0
+
+# ==============================================================================
+# TYPE HINTS AND COMPATIBILITY
+# ==============================================================================
+
+typing-extensions>=4.9.0,<5.0.0  # Added - for type hints
+
+# ==============================================================================
+# OPTIONAL: ADVANCED FEATURES
+# ==============================================================================
+
+# LoRA adapters support
+peft>=0.8.0,<1.0.0  # Added - for parameter-efficient fine-tuning
+
+# Accelerated training/inference
+accelerate>=0.30.0,<1.0.0  # Added - for distributed training support
+
+# Safe tensor format
+safetensors>=0.4.0,<1.0.0  # Added - safer model file format

@@ -1,5 +1,9 @@
 # CVLT AI vLLM Gradio WebUI 2.0
 
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
+[![Docker](https://img.shields.io/badge/docker-available-blue.svg)](./Dockerfile)
+
 A comprehensive web-based interface for vLLM with advanced features including multi-GPU support, RAG capabilities, web scraping, file processing, and more.
 
 ##  Features

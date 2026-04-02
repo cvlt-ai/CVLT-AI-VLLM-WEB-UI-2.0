@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  vllm-webui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vllm-webui
+    ports:
+      - "7860:7860"
+    volumes:
+      # Mount models directory for caching
+      - ./models:/app/models
+      # Mount data directory for RAG documents
+      - ./data:/app/data
+      # Mount config directory
+      - ./config:/app/config
+    environment:
+      - MODEL_NAME=meta-llama/Llama-2-7b-chat-hf
+      - TENSOR_PARALLEL_SIZE=1
+      - GPU_MEMORY_UTILIZATION=0.9
+      - HOST=0.0.0.0
+      - PORT=7860
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7860/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+# Optional: ChromaDB as separate service for production
+# Uncomment if you want ChromaDB running separately
+#  chromadb:
+#    image: chromadb/chroma:latest
+#    container_name: chromadb
+#    ports:
+#      - "8000:8000"
+#    volumes:
+#      - chroma-data:/chroma/chroma
+#    environment:
+#      - CHROMA_SERVER_HOST=0.0.0.0
+#      - CHROMA_SERVER_HTTP_PORT=8000
+#    restart: unless-stopped
+
+volumes:
+  chroma-data:
